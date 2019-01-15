@@ -1,0 +1,13 @@
+-----------------后端启动
+--启动顺序
+CenterBootstrap（jjrt-center） 注册中心
+AuthBootstrap（jjrt-auth-server）授权服务
+AdminBootstrap（jjrt-admin）管理台模块
+PayBootstrap（jjrt-pay）支付模块
+GatewayServerBootstrap（jjrt-gateway-v2） 网关
+---以下可选启动
+MonitorBootstrap（jjrt-monitor）应用监控
+TraceBootstrap（jjrt-trace）交易链路监控
+
+-----------------前端启动
+npm run dev

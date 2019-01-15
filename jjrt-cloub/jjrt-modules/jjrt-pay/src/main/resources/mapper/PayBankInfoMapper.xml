@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.jjrt.security.pay.mapper.PayBankInfoMapper">
+  <resultMap id="BaseResultMap" type="com.github.jjrt.security.pay.vo.PayBankInfo">
+    <id column="BANK_CODE" jdbcType="CHAR" property="bankCode" />
+    <result column="BANK_NAME" jdbcType="VARCHAR" property="bankName" />
+    <result column="BANK_URL" jdbcType="VARCHAR" property="bankUrl" />
+    <result column="BANK_LOGO" jdbcType="VARCHAR" property="bankLogo" />
+    <result column="BANK_CALL_NO" jdbcType="VARCHAR" property="bankCallNo" />
+    <result column="INSERT_TIME" jdbcType="CHAR" property="insertTime" />
+    <result column="LST_UPD_TIME" jdbcType="CHAR" property="lstUpdTime" />
+    <result column="RESV1" jdbcType="VARCHAR" property="resv1" />
+    <result column="RESV2" jdbcType="VARCHAR" property="resv2" />
+    <result column="RESV3" jdbcType="VARCHAR" property="resv3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    BANK_CODE, BANK_NAME, BANK_URL, BANK_LOGO, BANK_CALL_NO, INSERT_TIME, LST_UPD_TIME, 
+    RESV1, RESV2, RESV3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PAY_BANK_INFO
+    where BANK_CODE = #{bankCode,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PAY_BANK_INFO
+    where BANK_CODE = #{bankCode,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.github.jjrt.security.pay.vo.PayBankInfo">
+    insert into PAY_BANK_INFO (BANK_CODE, BANK_NAME, BANK_URL, 
+      BANK_LOGO, BANK_CALL_NO, INSERT_TIME, 
+      LST_UPD_TIME, RESV1, RESV2, 
+      RESV3)
+    values (#{bankCode,jdbcType=CHAR}, #{bankName,jdbcType=VARCHAR}, #{bankUrl,jdbcType=VARCHAR}, 
+      #{bankLogo,jdbcType=VARCHAR}, #{bankCallNo,jdbcType=VARCHAR}, #{insertTime,jdbcType=CHAR}, 
+      #{lstUpdTime,jdbcType=CHAR}, #{resv1,jdbcType=VARCHAR}, #{resv2,jdbcType=VARCHAR}, 
+      #{resv3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.jjrt.security.pay.vo.PayBankInfo">
+    insert into PAY_BANK_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bankCode != null">
+        BANK_CODE,
+      </if>
+      <if test="bankName != null">
+        BANK_NAME,
+      </if>
+      <if test="bankUrl != null">
+        BANK_URL,
+      </if>
+      <if test="bankLogo != null">
+        BANK_LOGO,
+      </if>
+      <if test="bankCallNo != null">
+        BANK_CALL_NO,
+      </if>
+      <if test="insertTime != null">
+        INSERT_TIME,
+      </if>
+      <if test="lstUpdTime != null">
+        LST_UPD_TIME,
+      </if>
+      <if test="resv1 != null">
+        RESV1,
+      </if>
+      <if test="resv2 != null">
+        RESV2,
+      </if>
+      <if test="resv3 != null">
+        RESV3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bankCode != null">
+        #{bankCode,jdbcType=CHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUrl != null">
+        #{bankUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bankLogo != null">
+        #{bankLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCallNo != null">
+        #{bankCallNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTime != null">
+        #{lstUpdTime,jdbcType=CHAR},
+      </if>
+      <if test="resv1 != null">
+        #{resv1,jdbcType=VARCHAR},
+      </if>
+      <if test="resv2 != null">
+        #{resv2,jdbcType=VARCHAR},
+      </if>
+      <if test="resv3 != null">
+        #{resv3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.jjrt.security.pay.vo.PayBankInfo">
+    update PAY_BANK_INFO
+    <set>
+      <if test="bankName != null">
+        BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUrl != null">
+        BANK_URL = #{bankUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bankLogo != null">
+        BANK_LOGO = #{bankLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCallNo != null">
+        BANK_CALL_NO = #{bankCallNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        INSERT_TIME = #{insertTime,jdbcType=CHAR},
+      </if>
+      <if test="lstUpdTime != null">
+        LST_UPD_TIME = #{lstUpdTime,jdbcType=CHAR},
+      </if>
+      <if test="resv1 != null">
+        RESV1 = #{resv1,jdbcType=VARCHAR},
+      </if>
+      <if test="resv2 != null">
+        RESV2 = #{resv2,jdbcType=VARCHAR},
+      </if>
+      <if test="resv3 != null">
+        RESV3 = #{resv3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BANK_CODE = #{bankCode,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.jjrt.security.pay.vo.PayBankInfo">
+    update PAY_BANK_INFO
+    set BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      BANK_URL = #{bankUrl,jdbcType=VARCHAR},
+      BANK_LOGO = #{bankLogo,jdbcType=VARCHAR},
+      BANK_CALL_NO = #{bankCallNo,jdbcType=VARCHAR},
+      INSERT_TIME = #{insertTime,jdbcType=CHAR},
+      LST_UPD_TIME = #{lstUpdTime,jdbcType=CHAR},
+      RESV1 = #{resv1,jdbcType=VARCHAR},
+      RESV2 = #{resv2,jdbcType=VARCHAR},
+      RESV3 = #{resv3,jdbcType=VARCHAR}
+    where BANK_CODE = #{bankCode,jdbcType=CHAR}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PAY_BANK_INFO
+  </select>
+</mapper>
